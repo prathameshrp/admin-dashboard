@@ -373,3 +373,11 @@ main h2:first-child, aside h2
     margin: 1rem 2rem;
     color: rgb(51, 49, 49);
 }
+
+button:hover
+{
+    cursor: pointer;
+    transition: all 0.5s;
+    background-color: #6d6f74;
+    transform: scale(1.1);
+}
