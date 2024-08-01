@@ -10,11 +10,41 @@
     grid-template-rows: 1fr 1fr 3fr 3fr;
     grid-template-areas: "navbar header header header" "navbar header header header" "navbar main-content main-content sidebar" "navbar main-content main-content sidebar";
 }
+/* Header styling */
 
 header
 {
     grid-area: header;
 }
+
+header .topBar
+{
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    padding: 1.7rem;
+    /* justify-content: center; */
+    align-items: center;
+
+}
+
+/* search bar styling */
+#searchBar
+{
+    width: 80%;
+    height: 35px;
+    border-radius: 33px;
+    border: none;
+    background-color: #e2e6ee;
+    
+}
+.topBar:first-child label
+{
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:15px;
+}
+
 nav
 {
     grid-area: navbar;
@@ -28,4 +58,12 @@ main
 aside
 {
     grid-area: sidebar;
+}
+
+/* utility styling */
+
+.icon
+{
+    height: 2.3rem;
+    width: auto;
 }
