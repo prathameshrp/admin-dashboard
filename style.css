@@ -2,6 +2,10 @@
     padding: 0;
     margin: 0;
 }
+:root
+{
+    --scaling-factor: calc(6 * ((100vw - 320px) / 680));
+}
 /* @font-face {
     font-family: 'adventure_time_logoregular';
     src: url('./resources/adventure-time/webfontkit-20240801-133045/adventure_time_logo-webfont.woff2') format('woff2'),
@@ -22,9 +26,11 @@
 {
     display: grid;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
-    grid-template-rows: 1fr 1fr 3fr 3fr;
+    grid-template-rows: 1fr 1fr 5fr 3fr;
     grid-template-areas: "navbar header header header" "navbar header header header" "navbar main-content main-content sidebar" "navbar main-content main-content sidebar";
     font-family: 'thundermanregular', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 100vh;
+    width: 100vw;
 }
 
 /* Header styling */
@@ -34,6 +40,8 @@ header
     grid-area: header;
     padding: 0 3vmin;
     box-shadow: 0px 1px 9px 2px rgba(0, 0, 0, 0.342);
+    max-height: 20vh;
+    /* max-width: 100vw; */
 }
 
 header .topBar
@@ -43,7 +51,7 @@ header .topBar
     padding: 1rem;
     /* justify-content: center; */
     align-items: center;
-    margin: 0.5vmin;
+    margin: 0.3vmin;
 }
 
 /* search bar styling */
@@ -55,7 +63,14 @@ header .topBar
     border-radius: 33px;
     border: none;
     background-color: #e2e6ee;
+    outline: none;
     
+}
+#searchBar:focus
+{
+    border: 2px solid #faf2a136;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.377);
+    transition: all 0.3s;
 }
 .topBar:first-child label
 {
@@ -83,7 +98,7 @@ header .topBar
 
 .username
 {
-    font-size: calc(10px + 6 * ((100vw - 320px) / 680));
+    font-size: calc(10px + var(--scaling-factor));
     /* vertical-align: middle; */
     font-weight: bold;
     /* padding: 0 1rem; */
@@ -106,7 +121,7 @@ header .topBar
 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 2vmin;
+    padding: 0vmin;
 }
 
 .profileCard
@@ -127,6 +142,7 @@ header .topBar
     display: flex;
     gap: 5%;
     align-items: center;
+    justify-self: center;
 }
 .profileOptions button
 {
@@ -143,12 +159,13 @@ nav
     grid-area: navbar;
     background-color: #fd5668;
     color: #fff;
+    height: 100vh;
 }
 .logo
 {
     display: flex;
     align-items: center;
-    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    font-size: calc(16px + var(--scaling-factor));
     font-weight: bold;
 }
 .logo .logoBlocks
@@ -208,9 +225,72 @@ nav ul li i
 /* main content styling */
 main
 {
+    width: 100%;
+    height: 100%;
     grid-area: main-content;
+    background-color: #e2e6ee;
+    z-index: -1;
+}
+main h2:first-child
+{
+    margin: 1rem 2.9rem;
+    color: rgb(51, 49, 49);
+}
+main article
+{
+    
+    display: grid;
+    grid-template: repeat(auto-fit, minmax(180px, 1fr))/ repeat(auto-fit, minmax(280px, 1fr));
+    /* grid-template-rows: repeat(auto-fit, minmax(200px, 1fr)); */
+    grid-auto-rows: clamp(30px, 1fr,180px);
+    margin: 1rem 2rem;
+    gap: 12px;
+    box-sizing: border-box;
 }
 
+.contentCard
+{
+    font-size: calc(6px + var(--scaling-factor));
+    background-color: white;
+    border-radius: 13px;
+    padding: 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.contentCard::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0.5em;
+    background-color: #6d6f74;
+    z-index: 2;
+    border-radius: 13px 0 0 13px;
+}
+.contentCard p
+{
+    font-size: calc(3px + var(--scaling-factor));
+    color: #6d6f74;    
+}
+.reactionIcons
+{
+    list-style-type: none;
+    display: flex;
+    /* align-self: right; */
+    float: right;
+    align-self: flex-end;
+    
+}
+
+.reactionIcons li
+{
+    margin: 6%;
+}
 aside
 {
     grid-area: sidebar;
@@ -234,5 +314,5 @@ aside
 
 .bigUserPhoto
 {
-    height: calc(2rem + 6.3vmin);
+    height: calc(1.5rem + 6.3vmin);
 }
