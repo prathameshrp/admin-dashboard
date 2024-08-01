@@ -105,9 +105,14 @@ aside
     border-radius: 50%;
 }
 
-img[src="./placeholder-image.jpg"]
+.profileImage
 {
     border-radius: 50%;
-    height: 4rem;
-    width: 4rem;
+    height: calc(1.9rem + 2.7vmin);
+    width: auto;
+}
+
+.bigUserPhoto
+{
+    height: calc(2rem + 6.3vmin);
 }
